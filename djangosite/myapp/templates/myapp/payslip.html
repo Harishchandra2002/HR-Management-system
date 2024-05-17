@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Payslip</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Payslip</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Employee:</strong> {{ payroll.employee }}</p>
+                <p class="card-text"><strong>Pay Date:</strong> {{ payroll.pay_date }}</p>
+                <p class="card-text"><strong>Basic Salary:</strong> ${{ payroll.basic_salary }}</p>
+                <p class="card-text"><strong>Deductions:</strong> ${{ payroll.deductions }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,84 +1,3 @@
-<!--&lt;!&ndash; recruitment/templates/recruitment/create_job_post.html &ndash;&gt;-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Create Job Posting</title>-->
-<!--    <script>-->
-<!--        function submitForm() {-->
-<!--            var form = document.getElementById("job-posting-form");-->
-<!--            var formData = new FormData(form);-->
-
-<!--            fetch(form.action, {-->
-<!--                method: 'POST',-->
-<!--                body: formData,-->
-<!--            })-->
-<!--            .then(response => response.json())-->
-<!--            .then(data => {-->
-<!--                if (data.success) {-->
-<!--                    alert('Job posting created successfully!');-->
-<!--                } else {-->
-<!--                    alert('Form submission failed:\n' + JSON.stringify(data.errors));-->
-<!--                }-->
-<!--            })-->
-<!--            .catch(error => {-->
-<!--                console.error('Error:', error);-->
-<!--            });-->
-<!--        }-->
-<!--    </script>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>Create Job Posting</h1>-->
-<!--    <form id="job-posting-form" method="post" enctype="multipart/form-data" action="{% url 'create_job_post' %}" onsubmit="event.preventDefault(); submitForm();">-->
-<!--        {% csrf_token %}-->
-
-<!--        &lt;!&ndash; Title Field &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="id_title">Title:</label>-->
-<!--            <input type="text" id="id_title" name="title" required>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Description Field &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="id_description">Description:</label>-->
-<!--            <textarea id="id_description" name="description" required></textarea>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Requirements Field &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="id_requirements">Requirements:</label>-->
-<!--            <textarea id="id_requirements" name="requirements" required></textarea>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Qualifications Field &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="id_qualifications">Qualifications:</label>-->
-<!--            <textarea id="id_qualifications" name="qualifications" required></textarea>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Posted By Field (Read-only) &ndash;&gt;-->
-<!--&lt;!&ndash;        <div>&ndash;&gt;-->
-<!--&lt;!&ndash;            <label for="id_posted_by">Posted By:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="text" id="id_posted_by" name="posted_by" value="{{ user.username }}" readonly>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        &lt;!&ndash; Posted On Field (Read-only) &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        <div>&ndash;&gt;-->
-<!--&lt;!&ndash;            <label for="id_posted_on">Posted On:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="text" id="id_posted_on" name="posted_on" value="{{ current_date }}" readonly>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--        &lt;!&ndash; Close Date Field &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="id_close_date">Close Date:</label>-->
-<!--            <input type="date" id="id_close_date" name="close_date" required>-->
-<!--        </div>-->
-
-<!--        <button type="submit">Submit</button>-->
-<!--    </form>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,11 +32,15 @@
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     alert('Job posting created successfully!');
+                    window.location.href = "{% url 'job_post_list' %}";
                 } else {
                     alert('Form submission failed:\n' + JSON.stringify(data.errors));
                 }
@@ -134,7 +57,7 @@
             <div class="col-12 col-sm-10 col-md-8 col-lg-6">
                 <div class="form-container">
                     <h1 class="text-center">Create Job Posting</h1>
-                    <form id="job-posting-form" method="post" enctype="multipart/form-data" action="{% url 'create_job_post' %}" onsubmit="event.preventDefault(); submitForm();">
+                    <form id="job-posting-form" method="post" enctype="multipart/form-data" action="{% url 'job_post' %}" onsubmit="event.preventDefault(); submitForm();">
                         <div style="display: none;">{% csrf_token %}</div>
 
                         <!-- Title Field -->
@@ -168,7 +91,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button></form>
                         </div>
                     </form>
                 </div>
