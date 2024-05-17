@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Publish Job Posting</h1>
-    <form method="post" action="{% url 'pending_to_publish' %}">
+    <form method="post" action="{% url 'job_posts' %}">
         {% csrf_token %}
 
         <!-- Add checkboxes to select job publishing portals -->

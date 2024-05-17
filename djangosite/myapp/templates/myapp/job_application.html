@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS file -->
+    <link rel="stylesheet" href="styles.css"> <!-- If you have custom styles -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Job Applications</h1>
+        <ul class="list-group">
+            {% for application in applications %}
+                <li class="list-group-item">
+                    <p><strong>Name:</strong> {{ application.name }}</p>
+                    <p><strong>Email:</strong> {{ application.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ application.phn }}</p>
+                    <p><strong>Degree:</strong> {{ application.degree }}</p>
+                    <p><strong>Resume:</strong> <a href="{{ application.resume.url }}" class="btn btn-primary">Download</a></p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

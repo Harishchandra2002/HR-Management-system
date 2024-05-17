@@ -3,218 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HRMS System</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>My Awesome Company</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Additional inline styles for demonstration purposes */
         body {
-            background-color: antiquewhite;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .section-title {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .section {
+        header {
+            background-color: #333;
+            color: #fff;
             padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+        }
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 50px 20px;
+            background-color: #f8f9fa; /* Background color for sections */
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">HRMS System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#employee-onboarding">Employee Onboarding</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#leave-management">Leave Management</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#performance-management">Performance Management</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#payroll-management">Payroll Management</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#recruitment">Recruitment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#training-development">Training & Development</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <header>
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">My Awesome Company</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'careers' %}">Careers</a></li>
 
-    <div class="container mt-4">
-        <!-- Employee Onboarding Section -->
-        <div id="employee-onboarding" class="section">
-            <h2 class="section-title">Employee Onboarding</h2>
-            <p>New Employee Registration</p>
-            <ul>
-                <li>New employee receives an email invitation to join the HRMS software.</li>
-                <li>Employee clicks on the registration link provided in the email.</li>
-                <li>Employee fills out the registration form with personal information (name, email, address, etc.).</li>
-                <li>Employee uploads required documents (ID proof, resume, etc.).</li>
-                <li>Employee clicks on the "Submit" button.</li>
-            </ul>
-            <p>Manager Approval</p>
-            <ul>
-                <li>HR manager receives a notification about the new employee registration.</li>
-                <li>HR manager reviews the registration details and documents.</li>
-                <li>HR manager approves the registration request.</li>
-                <li>Employee receives a confirmation email upon approval.</li>
-            </ul>
-            <p>Access to Employee Portal</p>
-            <ul>
-                <li>Employee receives login credentials (username and password) via email.</li>
-                <li>Employee logs in to the HRMS software using the provided credentials.</li>
-                <li>Employee gains access to the employee portal/dashboard.</li>
-            </ul>
-        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        <!-- Leave Management Section -->
-        <div id="leave-management" class="section">
-            <h2 class="section-title">Leave Management</h2>
-            <p>Requesting Leave</p>
-            <ul>
-                <li>Employee logs in to the HRMS software.</li>
-                <li>Employee navigates to the "Leave" section.</li>
-                <li>Employee clicks on the "Request Leave" button.</li>
-                <li>Employee selects the type of leave (sick leave, vacation, etc.).</li>
-                <li>Employee selects the start and end dates of the leave.</li>
-                <li>Employee provides a reason for the leave.</li>
-                <li>Employee submits the leave request.</li>
-            </ul>
-            <p>Manager Approval</p>
-            <ul>
-                <li>Manager receives a notification about the leave request.</li>
-                <li>Manager reviews the request details.</li>
-                <li>Manager approves or denies the leave request.</li>
-                <li>Employee receives a notification about the status of their leave request.</li>
-            </ul>
-            <p>Viewing Leave Balance</p>
-            <ul>
-                <li>Employee navigates to the "Leave" section.</li>
-                <li>Employee views their remaining leave balance for different leave types.</li>
-                <li>Employee can also view their leave history.</li>
-            </ul>
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h1>Welcome to My Awesome Company</h1>
+                    <p>We provide innovative solutions for your business needs.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Performance Management Section -->
-        <div id="performance-management" class="section">
-            <h2 class="section-title">Performance Management</h2>
-            <p>Setting Goals</p>
-            <ul>
-                <li>Manager and employee meet to discuss and set performance goals.</li>
-                <li>Manager logs in to the HRMS software.</li>
-                <li>Manager navigates to the "Performance" section.</li>
-                <li>Manager creates performance goals for the employee.</li>
-                <li>Manager assigns goals and sets deadlines.</li>
-            </ul>
-            <p>Performance Review</p>
-            <ul>
-                <li>At the end of the performance cycle, manager conducts a performance review.</li>
-                <li>Manager evaluates employee performance based on predefined criteria.</li>
-                <li>Manager provides feedback and ratings for each goal.</li>
-                <li>Employee receives feedback and ratings from the manager.</li>
-            </ul>
-            <p>Development Plan</p>
-            <ul>
-                <li>Based on the performance review, manager and employee collaborate on a development plan.</li>
-                <li>Manager assigns training programs, courses, or projects to help the employee improve.</li>
-            </ul>
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>About Us</h2>
+                    <p>At My Awesome Company, we are dedicated to delivering high-quality services that exceed our clients' expectations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget purus vel risus lacinia convallis.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="about.jpg" alt="About Us" class="img-fluid">
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Payroll Management Section -->
-        <div id="payroll-management" class="section">
-            <h2 class="section-title">Payroll Management</h2>
-            <p>Generating Payroll</p>
-            <ul>
-                <li>HR manager logs in to the HRMS software.</li>
-                <li>HR manager navigates to the "Payroll" section.</li>
-                <li>HR manager inputs employee attendance, leaves, and other relevant data.</li>
-                <li>HR manager verifies and approves payroll calculations.</li>
-                <li>HR manager generates payroll for the pay period.</li>
-            </ul>
-            <p>Employee Payslip</p>
-            <ul>
-                <li>Employees receive email notifications about the generation of their payslips.</li>
-                <li>Employees log in to the HRMS software to view and download their payslips.</li>
-                <li>Employees can view details such as salary, deductions, taxes, etc.</li>
-            </ul>
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Web Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Graphic Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Digital Marketing</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Recruitment Section -->
-        <div id="recruitment" class="section">
-            <h2 class="section-title">Recruitment and Applicant Tracking</h2>
-            <p>Job Posting</p>
-            <ul>
-                <li>HR manager logs in to the HRMS software.</li>
-                <li>HR manager navigates to the "Recruitment" section.</li>
-                <li>HR manager creates a new job posting by providing job details, requirements, and qualifications.</li>
-                <li>HR manager publishes the job posting to various job boards and platforms.</li>
-            </ul>
-            <p>Candidate Application</p>
-            <ul>
-                <li>Job seekers find the job posting on job boards or the company website.</li>
-                <li>Candidates apply for the job by submitting their resume and other required documents through the HRMS software.</li>
-                <li>Candidates receive a confirmation email upon successful submission.</li>
-            </ul>
-            <p>Application Review</p>
-            <ul>
-                <li>HR manager receives notifications about new job applications.</li>
-                <li>HR manager reviews candidate profiles, resumes, and application materials.</li>
-                <li>HR manager shortlists candidates based on qualifications and suitability for the position.</li>
-            </ul>
-            <p>Interview Scheduling</p>
-            <ul>
-                <li>HR manager schedules interviews with shortlisted candidates through the HRMS software.</li>
-                <li>Candidates receive email invitations with interview details and options to confirm or reschedule.</li>
-            </ul>
-            <p>Interview Feedback and Selection</p>
-            <ul>
-                <li>Interviewers provide feedback and evaluations for each candidate through the HRMS software.</li>
-                <li>HR manager reviews interview feedback and makes final hiring decisions
-                </li>
-            </ul>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Contact us today to discuss how we can help your business grow.</p>
+                    <address>
+                        <strong>My Awesome Company</strong><br>
+                        123 Main Street, Cityville<br>
+                        Country<br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
-                <!-- Training and Development Section -->
-    <div id="training-development" class="section">
-        <h2 class="section-title">Training and Development</h2>
-        <p>Training Needs Assessment</p>
-        <ul>
-            <li>HR manager conducts a training needs assessment to identify skill gaps and training requirements.</li>
-            <li>HR manager gathers feedback from managers and employees through surveys or performance reviews.</li>
-        </ul>
-        <p>Training Program Creation</p>
-        <ul>
-            <li>HR manager selects training programs or courses based on identified needs.</li>
-            <li>HR manager creates training programs within the HRMS software, specifying details such as objectives, content, and duration.</li>
-        </ul>
-        <p>Employee Enrollment</p>
-        <ul>
-            <li>Employees receive notifications about available training programs through the HRMS software.</li>
-            <li>Employees browse and enroll in training programs relevant to their job roles and development goals.</li>
-        </ul>
-        <p>Training Delivery and Tracking</p>
-        <ul>
-            <li>Employees attend training sessions or complete online courses as scheduled.</li>
-            <li>Training attendance and completion data are recorded in the HRMS software.</li>
-            <li>HR manager monitors employee progress and completion rates.</li>
-        </ul>
-    </div>
-</div>
+    </section>
 
-<!-- Bootstrap JS and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Awesome Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

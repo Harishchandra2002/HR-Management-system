@@ -1,0 +1,31 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}Employee Page{% endblock %}
+{% block navbar %}
+<div class="dropdown-menu" aria-labelledby="employeeDropdown">
+                        <a class="dropdown-item" href="#">Goals</a>
+                        <a class="dropdown-item" href="#">Training & Development</a>
+                        <a class="dropdown-item" href="{% url 'generate_payroll' %}">Payroll</a>
+                        <a class="dropdown-item" href="{% url 'pending_leave_requests' %}">Leave requests</a>
+                        <a class="dropdown-item" href="#" id="leavedropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Recruitment &raquo;
+    </a>
+    <div class="dropdown-menu leavedropdown" aria-labelledby="leavedropdown">
+        <a class="dropdown-item" href="{% url 'job_post' %}" id="requestLeaveLink">Job posting</a>
+        <a class="dropdown-item" href="{% url 'job_post_list' %}">Job publishing</a>
+        <a class="dropdown-item" href="{% url 'job_applications' %}">Job Applications</a>
+    </div>
+                    </div>
+{% endblock %}
+{% block content %}
+<h3>Welcome, <br>{{ employee_name }}</h3>
+<!-- Content for employee -->
+<br><br>
+<p>"Embrace every challenge as an opportunity for growth and learning. Remember, success is not
+determined by the absence of obstacles but by the courage to overcome them. Stay resilient in
+the face of adversity, for it is in our toughest moments that we discover our true strength.
+Believe in yourself and your abilities, for you possess the power to achieve greatness. Keep moving
+forward with unwavering determination and a positive mindset, knowing that every step you take brings you closer to your goals.
+Your journey may be challenging,
+but it is also filled with endless possibilities and opportunities for success."</p>
+{% endblock %}

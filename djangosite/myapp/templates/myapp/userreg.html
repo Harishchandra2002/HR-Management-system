@@ -44,10 +44,8 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Show success message as a pop-up
-                    alert('Employee registration successful!');
-                    // Optionally, you can reload the page or redirect to another page
-                    // window.location.reload();
+                    // Redirect to the URL provided in the response
+                    window.location.href = data.redirect_url;
                 } else {
                     // Show error messages as a pop-up
                     alert('Form submission failed:\n' + JSON.stringify(data.errors));
@@ -64,7 +62,7 @@
         <div class="form-container">
             <h1 class="text-center">Employee Registration</h1>
             <form id="employee-registration-form" method="post" enctype="multipart/form-data" action="{% url 'insertuser' %}" onsubmit="event.preventDefault(); submitForm();">
-                <div style="display: none;">{% csrf_token %}</div>
+                {% csrf_token %}
 
                 <!-- Name Field -->
                 <div class="form-group">

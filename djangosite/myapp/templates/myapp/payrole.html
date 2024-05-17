@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Generate Payroll</h2>
+    <form id="payrollForm" action="{% url 'approve_payroll' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="employeeId">Employee Id:</label>
+            <input type="number" id="employeeId" name="employee_id" required>
+        </div>
+
+    <div class="form-group">
+        <label for="attendance">Attendance (days):</label>
+        <input type="number" id="attendance" name="attendance" required>
+    </div>
+    <div class="form-group">
+        <label for="extraWork">Extra Work (hours):</label>
+        <input type="number" id="extraWork" value="0">
+    </div>
+    <div class="form-group">
+        <label for="leaves">Leaves (days):</label>
+        <input type="number" id="leaves" name="leaves" required>
+    </div>
+    <div class="form-group">
+        <label for="deductions">Deductions ($):</label>
+        <input type="number" id="deductions" name="deductions" value="0">
+    </div>
+    <div class="form-group">
+        <label for="otherData">Other Relevant Data:</label>
+        <input type="text" id="otherData"  name="other_data">
+    </div>
+    <div class="form-group">
+        <button onclick="generatePayroll()">Approve</button>
+    </div>
+    <div id="result" class="result" style="display: none;">
+        <h3>Payroll Details:</h3>
+        <p id="payrollDetails"></p>
+<!--        <button onclick="approvePayroll()">Approve Payroll</button>-->
+        <div class="form-group">
+            <button type="submit" >Generate Payroll</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<script>
+function generatePayroll() {
+    const employeeName = document.getElementById('employeeId').value;
+    const attendance = parseInt(document.getElementById('attendance').value);
+    const extraWork = parseInt(document.getElementById('extraWork').value);
+    const leaves = parseInt(document.getElementById('leaves').value);
+    const deductions = parseInt(document.getElementById('deductions').value);
+    const otherData = document.getElementById('otherData').value;
+
+    // Example payroll calculation logic
+    const totalDays = 30;
+    const workedDays = totalDays - leaves;
+    const dailyWage = 100; // Assuming a daily wage of $100
+    const extraWorkRate = 10; // Assuming $10 per extra work hour
+    const totalExtraWorkWage = extraWork * extraWorkRate;
+    const totalWageBeforeDeductions = (workedDays * dailyWage) + totalExtraWorkWage;
+    const totalWage = totalWageBeforeDeductions - deductions;
+
+    const payrollDetails = `
+        Employee Name: ${employeeId}<br>
+        Attendance: ${attendance} days<br>
+        Extra Work: ${extraWork} hours<br>
+        Leaves: ${leaves} days<br>
+        Deductions: $${deductions}<br>
+        Other Relevant Data: ${otherData}<br>
+        Total Wage: $${totalWage}
+    `;
+
+    document.getElementById('payrollDetails').innerHTML = payrollDetails;
+    document.getElementById('result').style.display = 'block';
+}
+
+<!--function approvePayroll() {-->
+<!--    alert('Payroll has been approved!');-->
+<!--    document.getElementById('result').style.display = 'none';-->
+<!--}-->
+</script>
+
+</body>
+</html>

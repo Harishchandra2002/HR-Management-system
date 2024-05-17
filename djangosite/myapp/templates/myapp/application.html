@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom CSS for reducing padding and margins */
+        .form-group {
+            margin-bottom: 0.5rem; /* Reduced margin bottom */
+        }
+        .form-control {
+            padding: 0.25rem 0.5rem; /* Reduced padding */
+            font-size: 0.875rem; /* Reduced font size */
+        }
+        .btn {
+            padding: 0.25rem 0.5rem; /* Reduced padding */
+            font-size: 0.875rem; /* Reduced font size */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Job Application Form</h1>
+        <form action="/submit_application/" method="post" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phn" class="col-sm-2 col-form-label">Phone Number:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="phn" name="phn" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="degree" class="col-sm-2 col-form-label">Degree:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="degree" name="degree" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="resume" class="col-sm-2 col-form-label">Resume:</label>
+                <div class="col-sm-10">
+                    <input type="file" id="resume" name="resume" class="form-control-file" accept=".pdf, .doc, .docx" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
