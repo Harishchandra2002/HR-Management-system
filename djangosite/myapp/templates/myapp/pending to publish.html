@@ -1,40 +1,32 @@
+<!-- recruitment/templates/recruitment/job_post_list.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Post List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Custom styles can be added here */
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-4">Job Post List</h1>
-        <ul class="list-group mt-4">
-            {% for job_post in job_posts %}
-                <li class="list-group-item">
-                    <h2>{{ job_post.title }}</h2>
-                    <p>{{ job_post.description }}</p>
-                    <form method="post" action="{% url 'publish_job_post1' %}" class="d-inline">
-                        {% csrf_token %}
-                        <input type="hidden" name="job_post_id" value="{{ job_post.id }}">
-                        <button type="submit" class="btn btn-success mr-2">Publish</button>
-                    </form>
-                    <form method="post" action="{% url 'delete_job_post' %}" class="d-inline">
-                        {% csrf_token %}
-                        <input type="hidden" name="job_post_id" value="{{ job_post.id }}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </li>
-            {% empty %}
-                <li class="list-group-item">No job posts available.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <h1>Job Post List</h1>
+    <ul>
+        {% for job_post in job_posts %}
+            <li>
+                <h2>{{ job_post.title }}</h2>
+                <p>{{ job_post.description }}</p>
+                <!-- Add other fields here as needed -->
+                <form method="post" action="{% url 'publish_job_post1' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="job_post_id" value="{{ job_post.id }}">
+                    <button type="submit">Publish</button>
+                </form>
+                <form method="post" action="{% url 'delete_job_post' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="job_post_id" value="{{ job_post.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No job posts available.</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

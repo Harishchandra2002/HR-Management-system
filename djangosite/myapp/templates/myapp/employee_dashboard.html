@@ -24,9 +24,9 @@
         .dropdown-menu > li:hover > .dropdown-submenu {
             display: block;
         }
-        .leavedropdown {
-            right: 100%;
-            left: auto;
+        .leavedropdown{
+            right:100%;
+            left:auto;
         }
     </style>
 </head>
@@ -46,13 +46,17 @@
                     <div class="dropdown-menu" aria-labelledby="employeeDropdown">
                         <a class="dropdown-item" href="#">Goals</a>
                         <a class="dropdown-item" href="#">Training & Development</a>
-                        <li><a href="{% url 'generate_payroll' %}">Generate Payroll</a></li>
-                        <li><a href="{% url 'employee_payslip' %}">Employee Payslip</a></li>
+        <li><a href="{% url 'employee_payslip' %}">Employee Payslip</a></li>
 
-                        <a class="dropdown-item" href="#">Employee OnBoarding</a>
-                        <a class="dropdown-item" href="{% url 'job_post' %}">Job Posting and Recruitment</a>
+                        <!-- Leave section with submenu -->
+                        <a class="dropdown-item" href="#" id="leavedropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Leave section &raquo;
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="leavedropdown">
+                            <a class="dropdown-item" href="#" id="requestLeaveLink">request leave</a>
+                             <a class="dropdown-item" href="{% url 'leave_balance' %}?employee_id={{ employee_id }}">leave balance and history </a>
 
-                        <a class="dropdown-item" href="{% url 'pending_leave_requests' %}">Leave Section</a>
+                        </div>
                     </div>
                 </li>
             </ul>

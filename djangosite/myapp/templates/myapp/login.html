@@ -27,7 +27,7 @@
 <body>
     <div class="login-container">
         <h2 class="text-center mb-4">Employee Login</h2>
-        <form method="post" action="{% url 'login_to_submit' %}?emp_id={{ employeeId }}}">
+        <form method="post" action="{% url 'login_to_submit' %}?emp_id={{ employee_id }}}">
     {% csrf_token %}
     <div class="form-group">
         <label for="employeeId">Employee ID</label>

@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
 
@@ -15,7 +16,7 @@ urlpatterns = [
     path('delete_job_post/', views.delete_job_post, name='delete_job_post'),
     path('publish_job_post1/', views.publish_job_post1, name='publish_job_post1'),
     path('create_job_post/', views.create_job_post, name='create_job_post'),
-    path('pending_to_publish/', views.job_post_list, name='pending_to_publish'),
+    path('pending_to_publish/', views.pending_to_publish, name='pending_to_publish'),
     path('main/', views.main1, name='main'),
     path('login/', views.login, name='login'),
     path('login_to_submit/', views.login_to_submit, name='login_to_submit'),
@@ -26,14 +27,4 @@ urlpatterns = [
     path('error_page/', views.error_page, name='error_page'),
     path('generate_payroll/', views.generate_payroll, name='generate_payroll'),
     path('employee_payslip/', views.employee_payslip, name='employee_payslip'),
-    path('emp/<str:emp_id>/', views.employee_page, name='employee_page'),
-    path('payslip/', views.view_payslip, name='view_payslip'),
-    path('approve_payroll/', views.approve_payroll, name='approve_payroll'),
-    path('pay_login/', views.pay_login, name='pay_login'),
-    path('employee_payslip/', views.employee_payslip, name='employee_payslip'),
-    path('download/', views.download_payslip, name='download_payslip'),
-    path('careers/', views.careers, name='careers'),
-    path('job_application_form/', views.job_application_form, name='job_application_form'),
-    path('submit_application/', views.submit_application, name='submit_application'),
-    path('job_applications/', views.job_applications, name='job_applications'),
 ]
